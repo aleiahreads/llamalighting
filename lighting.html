@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Llama with Lighting</title>
+    <style>
+      #container {
+          display: flex;
+          justify-content: center; /* Center the canvas */
+          align-items: center;
+      }
+
+      #fpsContainer {
+          display: flex;
+          justify-content: center; /* Align FPS counter to the left */
+          margin-top: 10px; /* Adjust spacing from canvas */
+      }
+
+      #fpsCounter {
+          color: white;
+          font-size: 20px;
+          font-weight: bold;
+          background: rgba(0, 0, 0, 0.5);
+          padding: 5px;
+          pointer-events: none;
+      }
+
+      #controls {
+          display: flex;
+          flex-direction: column;
+          align-items: center; /* Align sliders to the left */
+          gap: 10px; /* Adjust spacing between sliders */
+          margin-top: 5px; /* Keep sliders close to FPS */
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <p>
+      [Aleiah Tzintzun]
+      [atzintzu@ucsc.edu]
+      [Note: Hello grader, I have included a cube (my llama), sphere, and a light source that moves back and forth. I also
+      added the keyboard controls like in the world implementation. I did my best to implement the Phong shader with the help
+      of the videos. I also included a button to turn the lighting on/off and a button to turn normal visualization on/off.
+      Unfortunately I was unable to get the spotlight working but I was able to get the lighting to work with my animal. I also 
+      added a slider to change the color of the light. To get it to work though you have to choose your color and then click the light 
+      color button, it won't work by just selecting a color.]
+    </p>
+
+    <div id="container">
+      <canvas id="webgl" width="400" height="400">
+        Please use a browser that supports "canvas"
+      </canvas>
+    </div>
+
+    <div id="fpsContainer">
+      <div id="fpsCounter"></div>
+    </div>  
+
+   <div id="controls">
+    <p>
+      <button type="button" id="normalOn">Normal On</button>
+      <button type="button" id="normalOff">Normal Off</button>
+    </p>
+    <p>
+      <button type="button" id="lightOn">Light On</button>
+      <button type="button" id="lightOff">Light Off</button>
+    </p>
+    <p>
+      Light Color <input type="color" value="#ff0000" id="lightColor">
+    </p>
+    <p>
+      Light X <input type="range" min="-250" max="250" value="0" class="slider" id="lightSlideX">
+      Light Y <input type="range" min="-250" max="250" value="0" class="slider" id="lightSlideY">
+      Light Z <input type="range" min="-250" max="250" value="0" class="slider" id="lightSlideZ">
+    </p>
+    <p>
+      <button type="button" id="SpotlightOn">Spotight On</button>
+      <button type="button" id="SpotlightOff">Spotlight Off</button>
+    </p>
+    <p>
+      Camera Angle <input type="range" min="0" max="360" value="5" class="slider" id="angleSlide">
+    </p>
+    <p>
+      Front Left Leg <input type="range" min="-25" max="90" value="0" class="slider" id="frontLLSlide">
+      Animation:
+      <button type="button" id="frontLLAnimateOn">ON</button>
+      <button type="button" id="frontLLAnimateOff">OFF</button>
+    </p>
+    <p>
+      Front Right Leg <input type="range" min="-25" max="90" value="0" class="slider" id="frontRLSlide">
+      Animation:
+      <button type="button" id="frontRLAnimateOn">ON</button>
+      <button type="button" id="frontRLAnimateOff">OFF</button>
+    </p>
+    <p>
+      Back Left Leg <input type="range" min="-25" max="90" value="0" class="slider" id="backLLSlide">
+      Animation:
+      <button type="button" id="backLLAnimateOn">ON</button>
+      <button type="button" id="backLLAnimateOff">OFF</button>
+    </p>
+    <p>
+      Back Right Leg <input type="range" min="-25" max="90" value="0" class="slider" id="backRLSlide">
+      Animation:
+      <button type="button" id="backRLAnimateOn">ON</button>
+      <button type="button" id="backRLAnimateOff">OFF</button>
+    </p>
+    <p>
+      Neck <input type="range" min="-15" max="15" value="0" class="slider" id="neckSlide">
+    <!--
+      Animation:
+      <button type="button" id="neckAnimateOn">ON</button>
+      <button type="button" id="neckAnimateOff">OFF</button>
+    -->
+    </p>
+    <p>
+      Head <input type="range" min="-15" max="10" value="0" class="slider" id="headSlide">
+      Animation:
+      <button type="button" id="headAnimateOn">ON</button>
+      <button type="button" id="headAnimateOff">OFF</button>
+    </p>
+    <p>
+      Ears <input type="range" min="-25" max="25" value="0" class="slider" id="earSlide">
+      Animation:
+      <button type="button" id="earAnimateOn">ON</button>
+      <button type="button" id="earAnimateOff">OFF</button>
+    </p>
+  </div>
+
+
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix-cse160.js"></script>
+    <script src="Point.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Circle3D.js"></script>
+    <script src="Camera.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Cylinder.js"></script>
+    <script src="Sphere.js"></script>
+    <script src="lighting.js"></script>
+  </body>
+</html>
